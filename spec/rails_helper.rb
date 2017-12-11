@@ -6,6 +6,7 @@ require 'spec_helper'
 require 'rspec/rails'
 require 'capybara/rails'
 
+#warden allows users to signin for testing purposes
 include Warden::Test::Helpers
 Warden.test_mode!
 
