@@ -1,0 +1,19 @@
+
+      <tr>
+        <td>
+          <%= post.id %>
+        </td>
+        <td>
+          <%= post.date %>
+        </td>
+        <td>
+          <%= post.user.last_name %>
+        </td>
+        <td>
+          <%= truncate(post.rationale) %>
+        </td>
+        <td>
+          Created <%= distance_of_time_in_words(post.created_at, Time.now)   %> ago
+        </td>
+      </tr>
+ 
