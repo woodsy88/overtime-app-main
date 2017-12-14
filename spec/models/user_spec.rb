@@ -1,13 +1,12 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-  	describe "creation" do
-  	
-    #before do block gets run before below blocks, thus creating a user for the tests	
-  		before do
-  			@user = User.create(email: "test@test.com", password: "password", password_confirmation: "password", first_name: "Jon", last_name: "Snow")
-  		end
+	 #before do block gets run before below blocks, thus creating a user for the tests 
+    before do
+      @user = User.create(email: "test@test.com", password: "password", password_confirmation: "password", first_name: "Jon", last_name: "Snow")
+    end
 
+    describe "creation" do
       #with info in before block, a user can be created - valid
   		it "can be created" do
   			expect(@user).to be_valid
@@ -22,4 +21,10 @@ RSpec.describe User, type: :model do
   		end
 
   	end
+
+    describe "custom full name methods" do
+      it 'has a full name method that combines first and last name' do
+        expect(@user.full_name).to eq("SNOW, JON")
+      end
+    end
 end
