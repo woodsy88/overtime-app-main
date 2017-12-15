@@ -3,7 +3,7 @@ require 'rails_helper'
 RSpec.describe User, type: :model do
 	 #before do block gets run before below blocks, thus creating a user for the tests 
     before do
-      @user = User.create(email: "test@test.com", password: "password", password_confirmation: "password", first_name: "Jon", last_name: "Snow")
+      @user = FactoryGirl.create(:user)
     end
 
     describe "creation" do
