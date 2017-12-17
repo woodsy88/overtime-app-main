@@ -1,5 +1,6 @@
 class PostsController < ApplicationController
-	before_action :set_post, only: [:show]
+	before_action :set_post, only: [:show, :edit, :update]
+	
 	def index
 		@posts = Post.all
 	end
@@ -19,6 +20,17 @@ class PostsController < ApplicationController
 		end
 	end
 
+	def edit
+	end
+
+	def update
+		if @post.update(post_params)
+			redirect_to @post, notice: 'Your post was created successfully'
+		else
+			render :edit
+		end
+	end
+
 	def show
 	end
 
@@ -31,4 +43,4 @@ class PostsController < ApplicationController
 	  def set_post
 	  	@post = Post.find(params[:id])
 	  end
-end
+	end
