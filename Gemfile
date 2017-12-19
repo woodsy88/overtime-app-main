@@ -63,3 +63,6 @@ gem 'popper_js', '~> 1.12', '>= 1.12.5'
 gem 'jquery-rails', '~> 4.3', '>= 4.3.1'
 
 gem 'gritter', '~> 1.2'
+
+gem 'administrate'
+gem 'bourbon', '~> 4.3', '>= 4.3.4'
