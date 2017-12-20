@@ -15,7 +15,7 @@ describe 'naviagte' do
         end
 
 
-        it 'has a status that can be edited on the form' do
+        it 'has a status that can be edited on the form by an admin' do
           visit edit_post_path(@post)
 
           choose('post_status_approved')
@@ -26,7 +26,21 @@ describe 'naviagte' do
 
         end
 
+
+        it 'cannot be edited by a non admin' do
+          # using @user instance variable makes the instance variable usable by other tests, using just user, makes it only available to this test
+          logout(:user) #log out admin user
+          user = FactoryGirl.create(:user) #create regular user
+          login_as(user, :scope => :user) #login regular user
+
+          visit edit_post_path(@post) #go to the edit post page
+
+          expect(page).to_not have_content('Approved') #we dont want the edit status radio buttons to be visible on the regular users edit post page
+        end
+
     end
+
+
 
   
 end
