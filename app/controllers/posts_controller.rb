@@ -21,9 +21,13 @@ class PostsController < ApplicationController
 	end
 
 	def edit
+		#pundit authorization
+		authorize @post
 	end
 
 	def update
+		#pundit authorization
+		authorize @post
 		if @post.update(post_params)
 			redirect_to @post, notice: 'Your post was created successfully'
 		else

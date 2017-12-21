@@ -38,6 +38,11 @@ class ApplicationPolicy
     Pundit.policy_scope!(user, record.class)
   end
 
+  def admin_types
+    #if you need new admin types, add them into the below array
+    ['AdminUser']
+  end
+
   class Scope
     attr_reader :user, :scope
 
