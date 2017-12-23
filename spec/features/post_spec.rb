@@ -5,7 +5,7 @@ describe 'navigate' do
     @user = FactoryGirl.create(:user)
     login_as(@user, :scope => :user)
   end
-##-------------------Index
+##----------Index
   describe 'index' do
     before do
       visit posts_path
@@ -25,8 +25,21 @@ describe 'navigate' do
       visit posts_path
       expect(page).to have_content(/Rationale|content/)
     end
+
+    it '- has a scope so that only post creators can see thier posts' do
+      post1 = Post.create(date: Date.today, rationale: "addf", user_id: @user.id)
+      post2 = Post.create(date: Date.today, rationale: "addf", user_id: @user.id)
+
+      other_user = User.create(first_name: 'Non', last_name: 'Authorized', email: "nonauthorized@test.com", password: "password", password_confirmation: "password")
+
+      post_from_other_user = Post.create(date: Date.today, rationale: "addf", user_id: other_user.id)
+
+      visit posts_path
+
+      expect(page).to_not have_content(/This post shouldn't be seen/)
+    end 
   end
-##-------------------New
+##----------New
   describe 'new' do
     it 'has a link from the homepage' do
       visit root_path
@@ -35,17 +48,18 @@ describe 'navigate' do
       expect(page.status_code).to eq(200)
     end
   end
-##-------------------Delete
+##----------Delete
   describe 'delete' do
-    it 'can be deleted' do
+    it '- can be deleted' do
       @post = FactoryGirl.create(:post)
+      @post.update(user_id: @user.id)
       visit posts_path
 
       click_link("delete_#{@post.id}_from_index")
       expect(page.status_code).to eq(200)
     end
   end
-##-------------------Create
+##----------Create
   describe 'creation' do
     before do
       visit new_post_path
@@ -71,7 +85,7 @@ describe 'navigate' do
       expect(User.last.posts.last.rationale).to eq("User Association")
     end
   end
-##-------------------Edit
+##----------Edit
   describe 'edit' do
     before do
       @edit_user = User.create(first_name: "asdf", last_name: "asdf", email: "asdfasdf@asdf.com", password: "asdfasdf", password_confirmation: "asdfasdf")
