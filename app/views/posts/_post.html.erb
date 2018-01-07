@@ -1,4 +1,3 @@
-
       <tr>
         <td>
           <%= post.id %>
@@ -15,7 +14,11 @@
         <td>
           Created <%= distance_of_time_in_words(post.created_at, Time.now)   %> ago
         </td>
+        <td>
+          <!-- using the status_label method from the posts_helper and passing post.status as arguement -->
+          <%= status_label post.status %>
+        </td>
         <td><%= link_to 'Edit', edit_post_path(post), id: "edit_#{post.id}" %></td>
         <td><%= link_to 'Delete', post_path(post), id: "delete_#{post.id}_from_index", method: :delete, data: { confirm: "Are you sure?" }  %></td>
       </tr>
- 
+
