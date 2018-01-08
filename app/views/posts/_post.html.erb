@@ -9,10 +9,10 @@
           <%= post.user.full_name %>
         </td>
         <td>
-          <%= truncate(post.rationale) %>
+          <%= link_to truncate(post.rationale), post %>
         </td>
         <td>
-          Created <%= distance_of_time_in_words(post.created_at, Time.now)   %> ago
+          Created <%= distance_of_time_in_words(post.created_at, Time.now) %> ago
         </td>
         <td>
           <!-- using the status_label method from the posts_helper and passing post.status as arguement -->

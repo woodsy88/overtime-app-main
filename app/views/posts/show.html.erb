@@ -1,1 +1,20 @@
-<%= @post.inspect %>
+<div class="card">
+  <div>
+    <h3><%= @post.rationale %></h3>
+  </div>
+  <div>
+    <h3><span>Overtime Requested: </span><%= @post.overtime_request %> hours</h3>
+  </div>
+  <div>
+    <h3><span>Employee </span><%= @post.user.full_name %></h3>
+  </div>
+  <div>
+    <h3><span>Date Requested:</span> <%= @post.date %></h3>
+    <p><%= distance_of_time_in_words(@post.created_at, Time.now) %> ago</p>
+  </div>
+  <div>
+    <h3><span>Status: </span><%= status_label @post.status %></h3>
+  </div>
+</div>
+<!-- can only edit post of the user created the post -->
+<%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-primary' if policy(@post).update? %>
