@@ -15,6 +15,7 @@
   <div>
     <h3><span>Status: </span><%= status_label @post.status %></h3>
   </div>
-</div>
+
 <!-- can only edit post of the user created the post -->
 <%= link_to 'Edit', edit_post_path(@post), class: 'btn btn-primary' if policy(@post).update? %>
+</div>
