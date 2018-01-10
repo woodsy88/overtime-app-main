@@ -68,3 +68,9 @@ gem 'administrate'
 gem 'bourbon', '~> 4.3', '>= 4.3.4'
 
 gem 'pundit', '~> 1.1'
+
+gem 'font-awesome-rails'
+
+gem 'twilio-ruby', '~> 5.6'
+
+gem 'dotenv-rails', :groups => [:development, :test]
