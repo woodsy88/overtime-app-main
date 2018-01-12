@@ -1,7 +1,7 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-	 #before do block gets run before below blocks, thus creating a user for the tests 
+	 #before do block gets run before below blocks, thus creating a user for the tests
     before do
       @user = FactoryGirl.create(:user)
     end
@@ -13,12 +13,20 @@ RSpec.describe User, type: :model do
   		end
 
       #if user has no first name, or last name the user is not valid
-  		it "can not be created without first name and last name" do
+  		it "can not be created without first name" do
   			@user.first_name = nil
-  			@user.last_name = nil
-
   			expect(@user).to_not be_valid
   		end
+
+      it "can not be created without last name" do
+        @user.last_name = nil
+        expect(@user).to_not be_valid
+      end
+
+      it "can not be created without phone number" do
+        @user.phone = nil
+        expect(@user).to_not be_valid
+      end
 
   	end
 
