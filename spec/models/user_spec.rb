@@ -1,22 +1,21 @@
 require 'rails_helper'
 
 RSpec.describe User, type: :model do
-	 #before do block gets run before below blocks, thus creating a user for the tests
     before do
       @user = FactoryGirl.create(:user)
     end
 
     describe "creation" do
-      #with info in before block, a user can be created - valid
   		it "can be created" do
   			expect(@user).to be_valid
   		end
+  	end
 
-      #if user has no first name, or last name the user is not valid
-  		it "can not be created without first name" do
-  			@user.first_name = nil
-  			expect(@user).to_not be_valid
-  		end
+    describe "validations" do
+      it "can not be created without first name" do
+        @user.first_name = nil
+        expect(@user).to_not be_valid
+      end
 
       it "can not be created without last name" do
         @user.last_name = nil
@@ -28,7 +27,17 @@ RSpec.describe User, type: :model do
         expect(@user).to_not be_valid
       end
 
-  	end
+      it "requires the phone attr to only contain integers" do
+          @user.phone = "mygreatstr"
+          expect(@user).to_not be_valid
+      end
+
+      it "requires the phone attr to have exactly 10 characters" do
+        @user.phone = "12345678910"
+        expect(@user).to_not be_valid
+      end
+
+    end
 
     describe "custom full name methods" do
       it 'has a full name method that combines first and last name' do
