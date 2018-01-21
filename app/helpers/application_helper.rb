@@ -1,5 +1,9 @@
 module ApplicationHelper
 
+  def admin_types
+    ['AdminUser']
+  end
+
 #active nav link
   def active?(path)
     #if on current page show "active"
