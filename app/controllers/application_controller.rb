@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
 	#makes sure all users need to be signed insun
   before_action :authenticate_user!
 
-  #Pundit Rescue from
+  #Pundit Rescue from - what happens when a unauthorized user tries to do something
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
   private
