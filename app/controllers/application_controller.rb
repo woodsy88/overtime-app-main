@@ -7,6 +7,10 @@ class ApplicationController < ActionController::Base
   #Pundit Rescue from - what happens when a unauthorized user tries to do something
   rescue_from Pundit::NotAuthorizedError, with: :user_not_authorized
 
+  def admin_types
+    ['AdminUser']
+  end
+
   private
 
   def user_not_authorized
