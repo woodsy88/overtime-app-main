@@ -1,6 +1,7 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-5 jumbotron employee-blocks">StuffLorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
-    <div class="col-md-5 jumbotron employee-blocks">Stuff Lorem ipsum dolor sit amet, consectetur adipiscing elit.</div>
+    <div class="jumbotron employee-blocks">
+      <h3>pending confirmation</h3>
+      <%= render partial: 'pending_audit_confirmations', locals: { pending_audit_confirmations: @pending_audit_confirmations } %>
   </div>
 </div>
