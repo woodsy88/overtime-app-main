@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :audit_logs, except: [:new, :edit, :destroy] do
     member do
+      #sends it to the confirm action in audit controller
       get :confirm
     end
   end
