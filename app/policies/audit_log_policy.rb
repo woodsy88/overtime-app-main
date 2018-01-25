@@ -5,6 +5,7 @@ class AuditLogPolicy < ApplicationPolicy
  end
 
  def confirm?
+  #does the audit_log user.id match the current user id.
   record.user_id == user.id
  end
 
