@@ -12,10 +12,9 @@ class Post < ApplicationRecord
 
   private
 
-  def update_audit_log
-    audit_log = AuditLog.where(user_id: self.user_id, start_date: (self.date - 7.days..self.date))
-    audit_log.confirmed!
-    #https://www.udemy.com/professional-ruby-on-rails-coding-course/learn/v4/t/lecture/5515262?start=0
-  end
+    def update_audit_log
+      audit_log = AuditLog.where(user_id: self.user_id, start_date: (self.date - 7.days..self.date)).last
+      audit_log.confirmed! if audit_log
+    end
 
 end
