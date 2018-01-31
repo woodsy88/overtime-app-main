@@ -14,6 +14,8 @@ class Post < ApplicationRecord
 
     def update_audit_log
       audit_log = AuditLog.where(user_id: self.user_id, start_date: (self.date - 7.days..self.date)).last
+
+      # the if statement makes sure there there is an audit log, if its nil skip over it - called a 'nil guard'
       audit_log.confirmed! if audit_log
     end
 
