@@ -1,7 +1,6 @@
 # OVERTIME APP
 
 
-
 The audit logs were necessary because they represent all of the potential records. The posts were only for the overtime requests. you can look at the difference like this:
 
  - posts are only for overtime requests.
