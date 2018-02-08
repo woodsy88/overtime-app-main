@@ -5,7 +5,7 @@
 <%  if current_user %>
   <ul class="custom-nav nav nav-tabs">
     <li class="<%= active?(root_path) %>">
-      <%= link_to "Home", root_path %>
+      <%= link_to "", root_path, class: 'fa fa-home' %>
     </li>
     <li class="<%= active?(posts_path) %>">
       <%= link_to "Time Entries", posts_path %>

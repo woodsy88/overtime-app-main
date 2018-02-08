@@ -2,7 +2,7 @@
   <div class="row">
   <% if @pending_audit_confirmations.count > 0 %>
     <div class="pending-homepage employee-blocks">
-      <h3>pending confirmation</h3>
+      <h3>I confirm that I did not perform any overtime for the week of:</h3>
       <%= render partial: 'pending_audit_confirmations', locals: { pending_audit_confirmations: @pending_audit_confirmations } %>
   </div>
   <% end %>
