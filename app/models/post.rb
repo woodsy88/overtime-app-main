@@ -14,9 +14,7 @@ class Post < ActiveRecord::Base
 
     def confirm_audit_log
       audit_log = AuditLog.where(user_id: self.user_id, start_date: (self.date - 7.days..self.date)).last
-       byebug
       audit_log.confirmed! if audit_log
-
     end
 
     def un_confirm_audit_log
