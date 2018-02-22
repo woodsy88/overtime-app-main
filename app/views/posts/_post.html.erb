@@ -14,7 +14,7 @@
           <%= status_label post.status %>
         </td>
         <td>
-          <%= post.overtime_request %>
+          <%= post.daily_hours %>
         </td>
         <td>
           <%= link_to fa_icon('pencil-square-o'), edit_post_path(post), class: 'index-icons', id: "edit_#{post.id}" if policy(post).update? %>
