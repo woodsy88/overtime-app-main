@@ -53,7 +53,7 @@ RSpec.describe User, type: :model do
       end
 
       it "requires the ssn attr to only have 4 chars" do
-        @user.company = '12345'
+        @user.ssn = '12345'
         expect(@user).to_not be_valid
       end
 
