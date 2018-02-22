@@ -4,18 +4,22 @@ class User < ApplicationRecord
 
   has_many :audit_logs
 
-  #
+  # self referential model association
   has_many :hands_associations, class_name: 'Hand'
   has_many :hands, through: :hands_associations
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :trackable, :validatable
 
-   validates_presence_of :first_name, :last_name, :phone
+  validates_presence_of :first_name, :last_name, :phone, :ssn, :company
 
    PHONE_REGEX = /\A[0-9]*\Z/
    validates_format_of :phone, with: PHONE_REGEX
    validates :phone, length: { is: 10 }
+
+
+   validates :ssn, length: { is: 4 }
+   validates_numericality_of :ssn
 
    # scope :employees, -> { where(type: nil)}
 
